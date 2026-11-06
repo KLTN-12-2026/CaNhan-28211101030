@@ -169,6 +169,11 @@ class ChatMessageViewSet(viewsets.ModelViewSet):
         
         return Response({"status": "success"})
 
+    @action(detail=False, methods=['get'])
+    def unread_count(self, request):
+        count = ChatMessage.objects.filter(receiver=request.user, is_read=False).count()
+        return Response({"unread_count": count})
+
     @action(detail=True, methods=['post'])
     def respond_offer(self, request, pk=None):
         message = self.get_object()

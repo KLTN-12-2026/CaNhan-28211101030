@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
+import { useUnreadMessages } from '../hooks/useUnreadMessages';
 
 function FreelancerSidebar({ handleLogout }) {
     const { t } = useTranslation();
     const location = useLocation();
+    const unreadMessagesCount = useUnreadMessages();
 
     const menuItems = [
         { name: t('sidebar.dashboard'), icon: 'dashboard', path: '/freelancer' },
@@ -34,17 +36,28 @@ function FreelancerSidebar({ handleLogout }) {
             <nav className="flex-1 space-y-1">
                 {menuItems.map((item) => {
                     const isActive = location.pathname === item.path;
+                    const isMessages = item.path === '/chat';
                     return (
                         <Link
                             key={item.name}
                             to={item.path}
-                            className={`flex items-center gap-3 px-6 py-3 transition-all duration-300 ease-in-out ${isActive
+                            className={`flex items-center gap-3 px-6 py-3 transition-all duration-300 ease-in-out relative ${isActive
                                     ? 'text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 border-r-4 border-teal-500'
                                     : 'text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800'
                                 }`}
                         >
-                            <span className="material-symbols-outlined">{item.icon}</span>
+                            <div className="relative flex items-center justify-center">
+                                <span className="material-symbols-outlined">{item.icon}</span>
+                                {isMessages && unreadMessagesCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></span>
+                                )}
+                            </div>
                             <span className="text-sm font-semibold">{item.name}</span>
+                            {isMessages && unreadMessagesCount > 0 && (
+                                <span className="ml-auto inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-[11px] font-black text-white bg-rose-500 rounded-full shadow-sm shadow-rose-500/40 animate-pulse">
+                                    {unreadMessagesCount > 99 ? '99+' : unreadMessagesCount}
+                                </span>
+                            )}
                         </Link>
                     );
                 })}

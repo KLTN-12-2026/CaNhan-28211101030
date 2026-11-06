@@ -206,7 +206,7 @@ function ClientDashboard() {
                                          </div>
                                      </div>
                                  )) : (
-                                     <div className="bg-white p-10 rounded-lg border-2 border-dashed border-slate-200 text-center text-slate-400">
+                                     <div className="bg-white dark:bg-slate-900 p-10 rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-800 text-center text-slate-400 dark:text-slate-500">
                                          {t('clientDashboard.noJobs') || "Chưa có tin tuyển dụng nào."}
                                      </div>
                                  )}
@@ -224,12 +224,12 @@ function ClientDashboard() {
                                      applications.filter(app => app.status === 'Accepted' && jobs.some(j => j.id === app.job)).map(app => {
                                          const jobObj = jobs.find(j => j.id === app.job);
                                          return (
-                                             <div key={app.id} className="bg-white p-6 rounded-2xl border border-slate-100 flex items-center justify-between shadow-sm">
+                                             <div key={app.id} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center justify-between shadow-sm">
                                                  <div className="flex items-center gap-4">
                                                      <img src={app.freelancer_info?.avatar || "https://lh3.googleusercontent.com/a/default-user"} className="w-12 h-12 rounded-full object-cover" alt="" />
                                                      <div>
-                                                         <h4 className="font-bold text-slate-800">{app.freelancer_info?.full_name}</h4>
-                                                         <p className="text-xs text-slate-500">{t('common.projectLabel') || "Dự án"}: {jobObj?.title}</p>
+                                                         <h4 className="font-bold text-slate-800 dark:text-slate-100">{app.freelancer_info?.full_name}</h4>
+                                                         <p className="text-xs text-slate-500 dark:text-slate-400">{t('common.projectLabel') || "Dự án"}: {jobObj?.title}</p>
                                                      </div>
                                                  </div>
                                                  <button
@@ -239,7 +239,7 @@ function ClientDashboard() {
                                                          revieweeId: app.freelancer_info?.user,
                                                          revieweeName: app.freelancer_info?.full_name
                                                      })}
-                                                     className="px-6 py-2 bg-amber-100 text-amber-700 font-bold rounded-full text-xs hover:bg-amber-200 transition-all"
+                                                     className="px-6 py-2 bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-bold rounded-full text-xs hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-all cursor-pointer"
                                                  >
                                                      {t('clientDashboard.evaluateNow') || "Đánh giá ngay"}
                                                  </button>
@@ -247,7 +247,7 @@ function ClientDashboard() {
                                          );
                                      })
                                  ) : (
-                                     <p className="text-sm text-slate-400 italic">{t('clientDashboard.noReviews') || "Chưa có dự án nào cần đánh giá."}</p>
+                                     <p className="text-sm text-slate-400 dark:text-slate-500 italic">{t('clientDashboard.noReviews') || "Chưa có dự án nào cần đánh giá."}</p>
                                  )}
                              </div>
                          </section>

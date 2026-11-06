@@ -109,6 +109,7 @@ const ChatPage = () => {
         try {
             await api.post('messages/mark_as_read/', { other_user_id: otherId });
             fetchConversations();
+            window.dispatchEvent(new Event('messagesRead'));
         } catch (error) {
             console.error("Error marking messages as read:", error);
         }

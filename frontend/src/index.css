@@ -71,6 +71,21 @@
 
   html.dark {
     color-scheme: dark;
+    --color-surface: #0b1120;
+    --color-background: #0b1120;
+    --color-on-surface: #f8fafc;
+    --color-on-background: #f8fafc;
+    --color-on-surface-variant: #94a3b8;
+    --color-surface-container-lowest: #1e293b;
+    --color-surface-container-low: #0f172a;
+    --color-surface-container: #1e293b;
+    --color-surface-container-high: #334155;
+    --color-surface-container-highest: #334155;
+    --color-surface-variant: #1e293b;
+    --color-outline: #64748b;
+    --color-outline-variant: #334155;
+    --color-on-primary-container: #68fadd;
+    --color-primary-container: #004d40;
   }
 
   html.dark body {
@@ -186,4 +201,53 @@ html.dark .shadow-lg,
 html.dark .shadow-xl,
 html.dark .shadow-2xl {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Dashboard specific dark theme */
+html.dark .bg-surface {
+  background-color: #0b1120 !important;
+}
+
+html.dark .bg-surface-container-lowest {
+  background-color: #1e293b !important;
+  color: #f1f5f9;
+}
+
+html.dark .bg-surface-container-low {
+  background-color: #0f172a !important;
+  color: #f1f5f9;
+}
+
+html.dark .bg-surface-container {
+  background-color: #1e293b !important;
+  color: #f1f5f9;
+}
+
+html.dark .bg-surface-container-high {
+  background-color: #334155 !important;
+}
+
+html.dark .bg-surface-container-highest {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-on-surface {
+  color: #f8fafc !important;
+}
+
+html.dark .text-on-surface-variant {
+  color: #94a3b8 !important;
+}
+
+html.dark .border-surface-container-low {
+  border-color: #334155 !important;
+}
+
+html.dark .text-surface-container-high {
+  color: #334155 !important;
+}
+
+html.dark [style*="radial-gradient"] {
+  background-image: radial-gradient(circle, #334155 1px, transparent 1px) !important;
 }

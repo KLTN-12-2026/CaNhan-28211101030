@@ -231,15 +231,15 @@ function FreelancerDashboard() {
                                 </div>
 
                                 {/* Wallet Card */}
-                                <div className="bg-linear-to-br from-teal-600 to-emerald-600 p-6 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition-transform" onClick={() => navigate('/wallet')}>
+                                <div className="bg-linear-to-br from-teal-600 to-emerald-600 p-6 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition-transform text-white" onClick={() => navigate('/wallet')}>
                                     <div className="flex justify-between items-start mb-4">
-                                        <p className="text-[10px] font-black text-black/70 uppercase tracking-widest">{t('dashboard.myWallet')}</p>
-                                        <span className="material-symbols-outlined text-black text-sm">account_balance_wallet</span>
+                                        <p className="text-[10px] font-black text-white/80 uppercase tracking-widest">{t('dashboard.myWallet')}</p>
+                                        <span className="material-symbols-outlined text-white text-sm">account_balance_wallet</span>
                                     </div>
-                                    <p className="text-2xl font-black text-black">${parseFloat(wallet?.balance || 0).toFixed(2)}</p>
+                                    <p className="text-2xl font-black text-white">${parseFloat(wallet?.balance || 0).toFixed(2)}</p>
                                     <div className="mt-4 flex items-center justify-between">
-                                        <span className="text-[10px] font-bold text-black/80">{wallet?.ai_credits || 0} AI Credits</span>
-                                        <span className="text-[10px] font-bold text-black bg-white/20 px-2 py-0.5 rounded">{t('dashboard.viewDetails')}</span>
+                                        <span className="text-[10px] font-bold text-white/90">{wallet?.ai_credits || 0} AI Credits</span>
+                                        <span className="text-[10px] font-bold text-white bg-white/20 px-2 py-0.5 rounded">{t('dashboard.viewDetails')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -256,22 +256,22 @@ function FreelancerDashboard() {
                                 {/* Radar Chart removed - replaced by actual Skill Chips UI */}
                                 <div className="flex-1 flex flex-col justify-center min-h-75 relative z-10">
                                     {profile?.ai_summary_report ? (
-                                        <div className="bg-white/90 p-6 rounded-2xl shadow-sm border border-slate-100 mb-6 relative">
+                                        <div className="bg-white/90 dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mb-6 relative">
                                             <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center shadow-lg">
                                                 <span className="material-symbols-outlined text-sm">smart_toy</span>
                                             </div>
-                                            <p className="text-sm font-medium text-slate-700 leading-relaxed italic">
+                                            <p className="text-sm font-medium text-slate-700 dark:text-slate-200 leading-relaxed italic">
                                                 "{profile.ai_summary_report}"
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="bg-white/50 p-6 rounded-2xl border border-dashed border-slate-300 text-center mb-6">
-                                            <span className="material-symbols-outlined text-4xl text-slate-300 mb-2">analytics</span>
-                                            <p className="text-sm text-slate-500">Chưa có đánh giá từ AI. Vui lòng cập nhật chi tiết hồ sơ.</p>
+                                        <div className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 text-center mb-6">
+                                            <span className="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 mb-2">analytics</span>
+                                            <p className="text-sm text-slate-500 dark:text-slate-400">Chưa có đánh giá từ AI. Vui lòng cập nhật chi tiết hồ sơ.</p>
                                         </div>
                                     )}
 
-                                    <div className="bg-white/80 p-5 rounded-xl backdrop-blur-sm">
+                                    <div className="bg-white/80 dark:bg-slate-800/80 p-5 rounded-xl backdrop-blur-sm border border-slate-100 dark:border-slate-700/50">
                                         <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4 flex items-center gap-2">
                                             <span className="material-symbols-outlined text-sm text-primary">verified</span>
                                             Kỹ năng đã xác thực
@@ -282,13 +282,13 @@ function FreelancerDashboard() {
                                                 profile.skill_list.map((skill, idx) => (
                                                     <span 
                                                         key={idx} 
-                                                        className="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold border border-slate-200 shadow-sm hover:border-primary hover:text-primary transition-colors cursor-default"
+                                                        className="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold border border-slate-200 dark:border-slate-700 shadow-sm hover:border-primary hover:text-primary transition-colors cursor-default"
                                                     >
                                                         {skill}
                                                     </span>
                                                 ))
                                             ) : (
-                                                <p className="text-sm text-slate-500 italic">Hồ sơ chưa cập nhật kỹ năng.</p>
+                                                <p className="text-sm text-slate-500 dark:text-slate-400 italic">Hồ sơ chưa cập nhật kỹ năng.</p>
                                             )}
                                         </div>
                                     </div>
@@ -397,10 +397,10 @@ function FreelancerDashboard() {
                                             const jobObj = jobs.find(j => j.id === app.job);
                                             const companyObj = companies.find(c => String(c.id) === String(jobObj?.client));
                                             return (
-                                                <div key={app.id} className="bg-white p-6 rounded-2xl border border-slate-100 flex items-center justify-between shadow-sm">
+                                                <div key={app.id} className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 flex items-center justify-between shadow-sm">
                                                     <div className="flex-1 min-w-0">
-                                                        <h4 className="font-bold text-slate-800 truncate">{companyObj?.company_name || 'Client'}</h4>
-                                                        <p className="text-xs text-slate-500 truncate">Dự án: {jobObj?.title}</p>
+                                                        <h4 className="font-bold text-slate-800 dark:text-slate-100 truncate">{companyObj?.company_name || 'Client'}</h4>
+                                                        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">Dự án: {jobObj?.title}</p>
                                                     </div>
                                                     <button
                                                         onClick={() => setReviewModal({
@@ -409,7 +409,7 @@ function FreelancerDashboard() {
                                                             revieweeId: companyObj?.user,
                                                             revieweeName: companyObj?.company_name
                                                         })}
-                                                        className="ml-4 px-4 py-2 bg-amber-100 text-amber-700 font-bold rounded-full text-[10px] hover:bg-amber-200 transition-all uppercase tracking-wider"
+                                                        className="ml-4 px-4 py-2 bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-bold rounded-full text-[10px] hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-all uppercase tracking-wider cursor-pointer"
                                                     >
                                                         Đánh giá
                                                     </button>
